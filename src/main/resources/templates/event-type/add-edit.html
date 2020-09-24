@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<th:block layout:fragment="view-title">
+		<title>Add/Edit Event Type</title>
+	</th:block>
+	<th:block layout:fragment="view-js">
+		<script charset="utf-8" src="/js/plugins/ace/ace.js" type="text/javascript"></script>
+		<script charset="utf-8" src="/js/custom/ace.js" type="text/javascript"></script>
+	</th:block>
+	<th:block layout:fragment="view-css">
+		<link href="/static/css/custom/ace.css" rel="stylesheet">
+	</th:block>
+</head>
+
+<body>
+<div class="container-fluid" layout:fragment="content">
+	<!-- ============================================================== -->
+	<!-- Bread crumb and right sidebar toggle -->
+	<!-- ============================================================== -->
+	<div class="row page-titles">
+		<div class="col-md-5 col-8 align-self-center">
+			<h3 class="text-themecolor m-b-0 m-t-0">Add an event type</h3>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index">Home</a></li>
+				<li class="breadcrumb-item active">Event types</li>
+			</ol>
+		</div>
+	</div>
+	<!-- ============================================================== -->
+	<!-- End Bread crumb and right sidebar toggle -->
+	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- Start Page Content -->
+	<!-- ============================================================== -->
+	<!-- Row -->
+	<div class="row">
+		<!-- Column -->
+		<div class="col-lg-12 col-xlg-12 col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="col-md-10">
+						<form method="POST" th:action="${add} ? @{/event-type/add} : @{/event-type/edit/{id}(id=${id})}"
+							  th:object="${eventTypeForm}">
+							<div class="form-group">
+								<label class="col-form-label" for="type">Type</label>
+								<input class="form-control" id="type" placeholder="Event type (e.g. reaction)"
+									   required th:field="*{type}" type="text"/>
+								<div class="alert alert-danger" role="alert" th:errors="*{type}"
+									 th:if="${#fields.hasErrors('type')}"></div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-form-label" for="description">Description</label>
+								<textarea class="form-control" id="description" placeholder="Event description"
+										  required rows="8" th:field="*{description}"></textarea>
+								<div class="alert alert-danger" role="alert" th:errors="*{type}"
+									 th:if="${#fields.hasErrors('type')}"></div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-form-label" for="editor">Custom information
+									schema</label>
+								<div>
+									<button class="btn btn-primary btn-sm" id="btnSchemaExample" type="button">Example
+									</button>
+									<button class="btn btn-primary btn-sm" id="btnSchemaFormat" type="button">Format
+									</button>
+								</div>
+								<textarea class="form-control hidden" id="textAreaSchema"
+										  th:field="*{customInformationSchema}"></textarea>
+								<div id="editor"></div>
+								<div class="alert alert-danger" role="alert"
+									 th:if="${#fields.hasErrors('customInformationSchema')}"
+									 th:uerrors="*{customInformationSchema}"></div>
+							</div>
+							
+							<div class="col-md-6">
+								<input class="btn btn-primary" type="submit" value="Submit">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Row -->
+	<!-- ============================================================== -->
+	<!-- End PAge Content -->
+	<!-- ============================================================== -->
+</div>
+</body>
+
+</html>

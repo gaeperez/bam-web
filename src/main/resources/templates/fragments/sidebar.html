@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head></head>
+
+<body>
+<div id="layoutSidenav_nav" th:fragment="sidebar">
+	<!-- Sidebar -->
+	<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+		<div class="sb-sidenav-menu">
+			<div class="nav">
+				<!-- Admin section -->
+				<div class="sb-sidenav-menu-heading">Admin</div>
+				<a class="nav-link" th:href="@{/agent-type}">
+					<div class="sb-nav-link-icon"><i class="fas fa-disease"></i></div>
+					Agent types
+				</a>
+				<a class="nav-link" th:href="@{/shape}">
+					<div class="sb-nav-link-icon"><i class="fas fa-shapes"></i></div>
+					Shapes
+				</a>
+				<a class="nav-link" th:href="@{/event-type}">
+					<div class="sb-nav-link-icon"><i class="fas fa-wave-square"></i></div>
+					Event types
+				</a>
+				
+				<!-- User section -->
+				<div class="sb-sidenav-menu-heading">User</div>
+				<a class="nav-link" th:href="@{/agent}">
+					<div class="sb-nav-link-icon"><i class="fas fa-dna"></i></div>
+					Agents
+				</a>
+				<a class="nav-link" th:href="@{/user}">
+					<div class="sb-nav-link-icon"><i class="fas fa-user-md"></i></div>
+					Users
+				</a>
+			</div>
+		</div>
+		
+		<!-- Footer	-->
+		<div class="sb-sidenav-footer">
+			<div class="small">Logged in as:</div>
+			[[${authUser.username}]]
+		</div>
+	</nav>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="header">
+	<meta charset="utf-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<!-- Tell the browser to be responsive to screen width -->
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<meta content="BAM - Web" name="description">
+	<meta content="Gael Pérez Rodríguez" name="author">
+	<!-- Favicon icon -->
+	<!--	<link href="favicon.png" rel="icon" type="image/png">-->
+	
+	<!-- Bootstrap 4 CSS -->
+	<link href="/css/plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
+	<!-- Fontawesome CSS -->
+	<link href="/css/plugins/fontawesome/all.min.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="/css/custom/styles.css" rel="stylesheet">
+	
+	<!-- JQuery JS -->
+	<script src="/js/plugins/jquery/jquery-3.5.1.min.js"></script>
+	<!-- Popper JS -->
+	<script src="/js/plugins/popper/popper.min.js"></script>
+	<!-- Bootstrap 4 JS -->
+	<script src="/js/plugins/bootstrap/bootstrap.bundle.min.js"></script>
+	<!-- Fontawesome JS -->
+	<script src="/js/plugins/fontawesome/all.min.js"></script>
+	<!-- Custom JS -->
+	<script src="/js/custom/scripts.js"></script>
+	
+	<!-- Custom blocks for each view -->
+	<th:block layout:fragment="view-title"/>
+	<th:block layout:fragment="view-js"/>
+	<th:block layout:fragment="view-css"/>
+</head>
+
+<body>
+</body>
+
+</html>

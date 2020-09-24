@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+	<meta charset="utf-8">
+	<meta content="ie=edge" http-equiv="x-ua-compatible">
+	<title>Edit a User</title>
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container-fluid" layout:fragment="content">
+	<!-- ============================================================== -->
+	<!-- Bread crumb and right sidebar toggle -->
+	<!-- ============================================================== -->
+	<div class="row page-titles">
+		<div class="col-md-5 col-8 align-self-center">
+			<h3 class="text-themecolor m-b-0 m-t-0">Edit a User</h3>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index">Home</a></li>
+				<li class="breadcrumb-item active">Users</li>
+			</ol>
+		</div>
+	</div>
+	<!-- ============================================================== -->
+	<!-- End Bread crumb and right sidebar toggle -->
+	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- Start Page Content -->
+	<!-- ============================================================== -->
+	<!-- Row -->
+	<div class="row">
+		<!-- Column -->
+		<div class="col-lg-12 col-xlg-12 col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="col-md-10">
+						<form method="POST" th:action="@{/user/edit/{id}(id=${id})}" th:object="${userForm}">
+							<div class="form-group">
+								<label class="col-form-label" for="password">Password</label>
+								<input class="form-control" id="password" placeholder="Enter password"
+									   th:field="*{password}" type="password"/>
+								<div class="alert alert-danger" role="alert" th:errors="*{password}"
+									 th:if="${#fields.hasErrors('password')}"></div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-form-label" for="firstname">First name</label>
+								<input class="form-control" id="firstname"
+									   placeholder="Enter first name" required th:field="*{firstname}" type="text">
+								<div class="alert alert-danger" role="alert" th:errors="*{firstname}"
+									 th:if="${#fields.hasErrors('firstname')}"></div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-form-label" for="surname">Last name</label>
+								<input class="form-control" id="surname" placeholder="Enter last name"
+									   th:field="*{surname}" type="text">
+								<div class="alert alert-danger" role="alert" th:errors="*{surname}"
+									 th:if="${#fields.hasErrors('surname')}"></div>
+							</div>
+							
+							<div class="form-group" th:if="${authUser.role.role.equals('ROLE_ADMIN')}">
+								<label for="role">Role</label>
+								<select id="role" th:field="*{role}">
+									<option th:each="role : ${userForm.allRoles}" th:text="${role.role}"
+											th:value="${role.id}"/>
+								</select>
+								<div class="alert alert-danger" role="alert" th:errors="*{role}"
+									 th:if="${#fields.hasErrors('role')}"></div>
+							</div>
+							
+							<div class="col-md-6">
+								<input class="btn btn-primary" type="submit" value="Submit">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Row -->
+	<!-- ============================================================== -->
+	<!-- End PAge Content -->
+	<!-- ============================================================== -->
+</div>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+#editor {
+    border-radius: .3rem;
+    margin-bottom: 2rem;
+    height: 300px;
+}
+
+.hidden {
+    display: none !important;
+}

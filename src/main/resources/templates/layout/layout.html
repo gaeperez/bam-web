@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+	<!-- https://startbootstrap.com/templates/sb-admin/	-->
+	<!-- General headers for each page -->
+	<head th:replace="fragments/header :: header">
+		<title>Header</title>
+	</head>
+	
+	<body class="sb-nav-fixed">
+		<!-- Topbar header -->
+		<div th:replace="fragments/navigation :: navigation"></div>
+		
+		<div id="layoutSidenav">
+			<!-- Left Sidebar -->
+			<div th:replace="fragments/sidebar :: sidebar"></div>
+			<!-- Page wrapper - Main content -->
+			<div class="page-wrapper" id="layoutSidenav_content">
+				<main>
+					<div layout:fragment="content"></div>
+				</main>
+			</div>
+		</div>
+	</body>
+</html>
